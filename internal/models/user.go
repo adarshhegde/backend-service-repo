@@ -4,15 +4,17 @@ import (
 	backendservicepb "github.com/adarshhegde/backend-api-repo/proto-files/generated-code/backendservice"
 )
 
-// Base Model, can be used in HTTP API By Default
+// Base Model, intended to be the default struct used in http api
 type User struct {
 	Username string `json:"username" bson:"username"`
 	Password string `json:"password" bson:"password"`
 }
 
-// Adding a receiver function to the model type
-// this ToProto helper allows you to easily convert a
-// model object instance to a Protobuf instance by simply calling ToProto() on the object
+// ToProto is a receiver function that acts as a helper for converting the regular model
+// to it's gRPC Equivalant protobuf generated struct.
+// Instead of manually converting it, this helper function makes life easier.
+// The methods in the Store will always return a models Base struct, and the same can be
+// used in gRPC, by simply calling ToProto() on the object, which gives the pb struct in return.
 func (user User) ToProto() *backendservicepb.User {
 	return &backendservicepb.User{
 		Username: user.Username,
@@ -23,7 +25,7 @@ func (user User) ToProto() *backendservicepb.User {
 // List of users
 type Users []User
 
-// Same type of helper as above.
+// We can have receiver functions on any custom type, even an Array/slice!
 func (users Users) ToProto() []*backendservicepb.User {
 	protoUsers := make([]*backendservicepb.User, len(users))
 	for i, u := range users {

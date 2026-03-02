@@ -15,5 +15,7 @@ func (handler *gRPCHandler) ListAllUsers(context.Context, *emptypb.Empty) (*back
 		return nil, status.Errorf(codes.Internal, "Internal Error")
 	}
 
-	return &backendservicepb.ListAllUsersResponse{Users: users.ToProto()}, nil
+	usersProto := users.ToProto() // hehe magic!
+
+	return &backendservicepb.ListAllUsersResponse{Users: usersProto}, nil
 }

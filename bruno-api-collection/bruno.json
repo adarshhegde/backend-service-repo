@@ -1,9 +1,19 @@
 {
   "version": "1",
-  "name": "test",
+  "name": "backend-service",
   "type": "collection",
   "ignore": [
     "node_modules",
     ".git"
-  ]
+  ],
+  "size": 0.0003757476806640625,
+  "filesCount": 2,
+  "protobuf": {
+    "protoFiles": [
+      {
+        "path": "../proto-files/backendservice/backend_service.proto",
+        "type": "file"
+      }
+    ]
+  }
 }

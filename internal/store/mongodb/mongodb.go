@@ -33,7 +33,7 @@ func (ms *MongoStore) CreateUser(user *models.User) error {
 	return err
 }
 
-func (ms *MongoStore) ListAllUsers() (error, []models.User) {
+func (ms *MongoStore) ListAllUsers() (error, models.Users) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 

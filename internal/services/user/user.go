@@ -8,7 +8,7 @@ import (
 
 type UserService interface {
 	CreateUser(dto.CreateUserRequest) error
-	ListAllUsers() (error, []models.User)
+	ListAllUsers() (error, models.Users)
 }
 
 type UserServiceImpl struct {
@@ -21,6 +21,6 @@ func (svc *UserServiceImpl) CreateUser(request dto.CreateUserRequest) error {
 		Password: request.Password,
 	})
 }
-func (svc *UserServiceImpl) ListAllUsers() (error, []models.User) {
+func (svc *UserServiceImpl) ListAllUsers() (error, models.Users) {
 	return svc.Store.ListAllUsers()
 }

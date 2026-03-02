@@ -11,6 +11,18 @@ services:
       HTTP_PORT: 3000
       MONGODB_URI: mongodb://admin:admin@mongodb:27017
 
+  backend-grpc:
+    build:
+      dockerfile: grpc.Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: mongodb://admin:admin@mongodb:27017
+      GRPC_PORT: 3001
+
   mongodb:
     image: mongo:7.0
     container_name: mongodb

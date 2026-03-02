@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package backendservice;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/adarshhegde/backend-api-repo/proto-files/generated-code/backendservicepb;backendservicepb";
+
+// The greeting service definition.
+service BackendService {
+  rpc ListAllUsers(google.protobuf.Empty) returns (ListAllUsersResponse);
+}
+
+message User {
+    string Username = 1;
+    string Password = 2;
+}
+
+// The response message containing the greetings
+message ListAllUsersResponse {
+  repeated User users = 1;
+}

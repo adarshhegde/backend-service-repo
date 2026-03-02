@@ -6,7 +6,6 @@ import "google/protobuf/empty.proto";
 
 option go_package = "github.com/adarshhegde/backend-api-repo/proto-files/generated-code/backendservicepb;backendservicepb";
 
-// The greeting service definition.
 service BackendService {
   rpc ListAllUsers(google.protobuf.Empty) returns (ListAllUsersResponse);
 }
